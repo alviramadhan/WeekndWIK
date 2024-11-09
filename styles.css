@@ -1,3 +1,55 @@
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-container {
+    background-color: #35124C;
+    border: solid white;
+    width: 300px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+.login-container h4{
+    margin: 0;
+}
+input[type="email"], input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    background-color: #543864;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0;
+}
+
+button.signup-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #FFBD69;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+a {
+    color: #1877f2;
+    text-decoration: none;
+    font-size: 0.7em;
+}
+
 *{
     font-family: 'Poppins';
     box-sizing: border-box;
@@ -121,18 +173,17 @@ button{
     font-size: 15px;
     margin: 0 5px;
     cursor: pointer;
-    width: 15%;
     border-radius: 10px;
     border: none;
     overflow: hidden;
 }
 
-button.b1{background: #FFBD69;}
-button.b1:hover{background: #FFAF47;}
-button.b2{background: #543864;color: white;}
-button.b2:hover{background: #412C4E; color: white;}
+button.b1{background: #FFBD69; width: 15%;}
+button.b1:hover{background: #FFAF47; width: 15%;}
+button.b2{background: #543864;color: white; width: 15%;}
+button.b2:hover{background: #412C4E; color: white; width: 15%;}
 
-
+/*HOME*/
 /*cover image*/
 .image-container{
     text-align: left;
@@ -167,8 +218,8 @@ h1.cover {
 /* Container for trending tracks and view more */
 .trending-container {
     display: flex;
-    justify-content: space-between; /* Space between the left and right elements */
-    align-items: center; /* Aligns items vertically in the center */
+    justify-content: space-between; 
+    align-items: center;
     padding: 10px 0;
 }
 
@@ -177,8 +228,110 @@ h1.cover {
     font-size: 18px;
 }
 
+/* Popup modal styling */
+.modal {
+    color: black;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
 
-/*user.html*/
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 250px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modal-content h2, .modal-content h3 {
+    font-family: 'Poppins', sans-serif;
+}
+.modal-content button{
+    background: #FFBD69;
+    color: black;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%; /* Full width for mobile-friendliness */
+}
+
+.modal-content button:hover {
+    background: #FFAF47;
+}
+
+/*ALBUM*/
+
+* {box-sizing: border-box;}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 5px;
+    padding: 16px;
+}
+
+.grid-item {
+    padding: 16px;
+    border-radius: 8px;
+/*    border: 3px solid #FFBD69;*/
+}
+
+.grid-item img {
+    width: 100%;
+    height: auto;
+}
+
+.album-title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.grid-item h3.title {
+    font-size: 1em;
+    color: white;
+    margin: 0;
+}
+
+.grid-item h3.year {
+    font-size: 1em;
+    color: #FFBD69;
+    margin: 0;
+}
+@media (max-width: 600px) {
+    .grid-container {
+    grid-template-columns: 1fr;
+    }
+}
+
+/*USER*/
 
 /*review statistic*/
 /* Flexbox container for review statistics */
@@ -206,6 +359,28 @@ h1.cover {
     font-weight: bolder;
 }
 
+img.circular-image{
+    width: 40%;
+    height: auto;
+    border-radius: 50%;
+    border: 5px solid white;
+}
+
+.accountContainer{
+    margin: 8%;
+}
+
+input.account-detail {
+    width: 100%;
+    font-size: 15px;
+    padding: 4px;
+    margin: -20px 0 20px 0;
+    border-radius: 6px;
+    display: block;
+    margin-left: auto; /* Centers input within container */
+    margin-right: auto;
+}
+
 p.underscore{
     text-decoration: underline;
     cursor: pointer;
@@ -213,4 +388,16 @@ p.underscore{
 
 p.underscore:hover{
     color: #FFBD69;
+}
+
+button.logout-button{
+    background: crimson;
+    color: white;
+    width: auto;
+    font-weight: bold;
+    display: block;
+    margin-left: auto; margin-right: auto;
+}
+button.logout-button:hover{
+    background: darkred;
 }
