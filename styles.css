@@ -1,9 +1,11 @@
 .form {
-    display: flex;
+    display:inline-flexbox;
     justify-content: center;
     align-items: center;
+
 }
 .login-container {
+    margin: auto;
     background-color: #35124C;
     border: solid white;
     width: 300px;
@@ -34,18 +36,18 @@ button[type="submit"] {
 }
 
 button.signup-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #FFBD69;
+    width: 7%;
+    padding: 5px;
+    background-color:#35124C;
     border: none;
     color: white;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 0;
 }
 
 a {
-    color: #1877f2;
+    color: #f8f8f8;
     text-decoration: none;
     font-size: 0.7em;
 }
@@ -117,6 +119,7 @@ ul.topnav li a.active {
 ul.topnav .nav-center {
     display: flex;
     justify-content: center;
+    gap: 20px;
     flex-grow: 1; 
     align-items: center;
 }
@@ -154,7 +157,10 @@ body {
     margin-left: auto;
     margin-right: auto;
     color: grey;
+    overflow: hidden;
 }
+
+
 
 .search-input {
     width: 60%;
@@ -180,8 +186,8 @@ button{
 
 button.b1{background: #FFBD69; width: 15%;}
 button.b1:hover{background: #FFAF47; width: 15%;}
-button.b2{background: #543864;color: white; width: 15%;}
-button.b2:hover{background: #412C4E; color: white; width: 15%;}
+button.b2{background: #543864;color: white; width: 25%;}
+button.b2:hover{background: #412C4E; color: white; width: 25%;}
 
 /*HOME*/
 /*cover image*/
@@ -256,7 +262,7 @@ h1.cover {
 .close {
     color: #aaa;
     float: right;
-    font-size: 28px;
+    font-size: 20px;
     font-weight: bold;
 }
 
@@ -344,7 +350,7 @@ h1.cover {
     text-align: center; /* Center the text within each statistic item */
     border: solid white 3px;
     border-radius: 20px;
-    background: 
+    background:#1E1E1E;
 }
 
 /* Styling for each statistic item */
@@ -400,4 +406,114 @@ button.logout-button{
 }
 button.logout-button:hover{
     background: darkred;
+}
+
+/* Styling for songs table */
+.songs-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.songs-table th, .songs-table td {
+    padding: 10px;
+    border-bottom: 1px solid #333;
+    text-align: left;
+}
+
+.songs-table th {
+    font-weight: bold;
+    color: #aaa;
+}
+
+.songs-table td {
+    color: #eee;
+    font-size: 16px;
+}
+
+.song-title {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+.cover-image {
+    width: 40px; /* Adjust the size as needed */
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 5px; /* Optional rounded corners */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
+
+.grid-item {
+    background-color: #1E1E1E; /* Background color for each grid item */
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.grid-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.grid-item h3.title {
+    font-size: 1.1em;
+    color: #FFBD69;
+    margin: 5px 0;
+}
+
+.grid-item p {
+    color: #f0f0f0;
+    margin: 3px 0;
+}
+
+.grid-item a {
+    color: #FFBD69;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.grid-item a:hover {
+    text-decoration: underline;
+}
+
+.song-title a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit the color from parent */
+    display: flex; /* Make it behave like flex for easy styling */
+    align-items: center;
+}
+
+
+.alert {
+    background-color: #444444; /* Dark grey background */
+    color: #FFBD69; /* Highlight color for the text */
+    border: 1px solid #FFBD69; /* Match border color */
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    width: 90%; /* Ensure it doesn't stretch across the full screen */
+    max-width: 600px; /* Control max width */
+    margin: 20px auto; /* Center the alert */
+    border-radius: 8px;
+    text-align: center;
+    z-index: 1000; /* Bring it to the front */
+}
+
+.alert .close {
+    color: #aaa;
+    font-size: 20px;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    text-decoration: none;
 }

@@ -22,8 +22,11 @@ if (mysqli_num_rows($results) > 0) {
         
         // Display each song with the album cover image
         echo "<div class='grid-item'>";
+        // Add link to songdetail_display.php with the song_id parameter
+        echo "<a href='songdetail_display.php?song_id=$song_id'>";
         echo "<img src='$cover_image_url' alt='Album Cover' style='width:100%; height:auto; border-radius:8px;'>";
         echo "<h3 class='title'>$title</h3>";
+        echo "</a>";
         echo "<p>Duration: $duration</p>";
         echo "<a href='$audio_url' target='_blank' class='btn btn-primary'>Play Song</a>";
         echo "</div>";
