@@ -7,3 +7,4 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
         alert("Please fill in both email and password.");
     }
 });
+
