@@ -7,36 +7,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'] ?? null;
 
     if ($email && $password) {
-        $sql = "SELECT * FROM users WHERE email = '$email'";
-        $result = mysqli_query($conn, $sql);
+        $sql = "SELECT * FROM users WHERE email = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-        if (mysqli_num_rows($result) === 1) {
-            $user = mysqli_fetch_assoc($result);
+        if ($result->num_rows === 1) {
+            $user = $result->fetch_assoc();
+            // Debugging: Log the retrieved user data
+            error_log("Retrieved user data: " . print_r($user, true));
+
             if (password_verify($password, $user['password_hash'])) {
+                // Store user information in the session
+                $_SESSION['user_id'] = $user['user_id']; // Ensure 'id' is the correct column name
+                $_SESSION['email'] = $user['email'];
+                $_SESSION['username'] = $user['username'];
+                $_SESSION['password'] = $user['password_hash'];
+
                 $_SESSION['login_message'] = "Login successful!";
                 $_SESSION['alert_type'] = "success";
                 header('Location: index.php');
                 exit;
             } else {
-                $_SESSION['login_message'] = "Invalid password.";
+                $_SESSION['login_message'] = "Incorrect password.";
                 $_SESSION['alert_type'] = "danger";
                 header('Location: login.php');
                 exit;
             }
         } else {
-            $_SESSION['login_message'] = "No account found with that email.";
+            $_SESSION['login_message'] = "No account found with this email.";
             $_SESSION['alert_type'] = "danger";
             header('Location: login.php');
             exit;
         }
     } else {
-        $_SESSION['login_message'] = "Please provide both email and password.";
+        $_SESSION['login_message'] = "Please fill out all fields.";
         $_SESSION['alert_type'] = "danger";
         header('Location: login.php');
         exit;
     }
 } else {
-    echo " ";
+    header('Location: login.php');
+    exit;
 }
-
-$conn->close();

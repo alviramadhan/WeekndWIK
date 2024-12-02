@@ -1,16 +1,11 @@
-
 <?php
-include "db_connect.php"; // Include the database connection
-?>
-<?php
-include "filter_logic.php"; // Include the filter php
-?>
-
-<?php
+include "db_connect.php"; 
+include "filter_logic.php"; 
 session_start();
+
 if (isset($_SESSION['login_message'])) {
     $alertType = isset($_SESSION['alert_type']) ? $_SESSION['alert_type'] : 'info';
-   echo "<div class ='container'>";
+    echo "<div class ='container'>";
     echo "<div class='alert alert-$alertType alert-dismissible fade in' style='background-color:#7838de; padding: 5px;'>";
     echo "<a href='#' class='close' data-dismiss='alert' aria-label='close' style=' font-size: 20px;'>&times;</a>";
     echo "<strong>" . htmlspecialchars($_SESSION['login_message']) . "</strong>";
@@ -36,7 +31,7 @@ if (isset($_SESSION['login_message'])) {
     <title>WeekndWIK</title>
 </head>
 
-<body>
+<body style="padding:20px;">
     <!-- Nav bar -->
     <ul class="topnav">
         <li>WeekndWIK</li>
@@ -44,88 +39,34 @@ if (isset($_SESSION['login_message'])) {
             <li><a href="index.php" class="active">HOME</a></li>
             <li><a href="album.php">ALBUM</a></li>
             <li><a href="song.php">SONG</a></li>
-            <li><a href="favorite.html">MY FAV</a></li>
+            <li><a href="favourite.php">MY FAV</a></li>
         </div>
-        <button class="signup-button"><a href="login.php"> Log In </a></button>
-        <button class="signup-button"><a href="signUp.php"> Sign Up </a></button>
-        <li class="right"><a href="user.html"><span class="material-symbols-outlined">account_circle</span></a></li>
+        
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <!-- Show logout button if user is logged in -->
+            <li class="right"><a href="user.php"><span class="material-symbols-outlined">account_circle</span></a></li>
+        <?php else: ?>
+            <!-- Show login and signup buttons if user is NOT logged in -->
+            <button class="nav-button"><a href="login.php">LOGIN</a></button>
+            <button class="nav-button"><a href="signup.php">SIGN UP</a></button>
+        <?php endif; ?>
     </ul>
-          <!-- Filter Form and Modal -->
-          <div id="filterPopup" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeFilterPopup()">&times;</span>
-            <h2>Filter by</h2>
-            <form method="GET" action="index.php">
-                <div>
-                <h3>Genre</h3>
-                    <label><input type="checkbox" name="genre[]" value="1"> Alternative R&B</label><br>
-                    <label><input type="checkbox" name="genre[]" value="2"> Pop</label><br>
-                    <label><input type="checkbox" name="genre[]" value="3"> R&B</label><br>
-                    <label><input type="checkbox" name="genre[]" value="4"> Synthwave</label><br>
-                    <label><input type="checkbox" name="genre[]" value="5"> Synth-Pop</label><br>
-                
-                </div>
-                <div>
-                    <h3>Year</h3>
-                    <label><input type="checkbox" name="year[]" value="2012"> 2012</label><br>
-                    <label><input type="checkbox" name="year[]" value="2013"> 2013</label><br>
-                    <label><input type="checkbox" name="year[]" value="2015"> 2015</label><br>
-                    <label><input type="checkbox" name="year[]" value="2016"> 2016</label><br>
-                    <label><input type="checkbox" name="year[]" value="2018"> 2018</label><br>
-                    <label><input type="checkbox" name="year[]" value="2020"> 2020</label><br>
-                    <label><input type="checkbox" name="year[]" value="2022"> 2022</label><br>
-                <button type="submit">Apply Filters</button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <!-- Search bar with form -->
-<div class="search-container">
-    <form method="GET" action="song.php">
-        <span class="material-symbols-outlined">search</span>
-        <input class="search-input" type="text" name="search" placeholder="Search an album or song..." required>
-        <button type="submit" class="b2">Search</button>
-            
-    </form>
-    <button type="button" class="b1" onclick="openFilterPopup()">Filters</button> 
-       
-</div>
+          
+    
 
-<!-- Result Searc Displaying -->
- <div class="container">
-        <h1>Results</h1>
-        <div class="grid-container">
-            <?php if (!empty($song_results)): ?>
-                <?php foreach ($song_results as $row): ?>
-                    <div class="grid-item">
-                        <img src="<?= htmlspecialchars($row['cover_image_url']); ?>" alt="Album Cover" style="width:100%; height:auto; border-radius:8px;">
-                        <h3 class="title"><?= htmlspecialchars($row['title']); ?></h3>
-                        <p>Duration: <?= htmlspecialchars($row['duration']); ?></p>
-                        <a href="<?= htmlspecialchars($row['audio_url']); ?>" target="_blank" class="btn btn-primary">Play Song</a>
-                    </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p>No songs found for this filter.</p>
-            <?php endif; ?>
-        </div>
-
-        <!-- hero --> 
+    <!-- hero --> 
     <div class="image-container">
         <img src="theWeekndCover.jpg" alt="Cover"> 
         <h1 class="cover">THE<br>WEEKND</h1>
     </div>
     <br><br>
 
-    
-
 
     <!-- Random Songs Section -->
-    <div class="container">
+    <div class="trending-container">
         <h1>Random Songs</h1>
         <div class="grid-container">
             <?php include "random_display.php"; ?>
-        </div>
-    </div>
         </div>
     </div>
    

@@ -28,20 +28,17 @@ if (isset($_SESSION['signup_message'])) {
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body style="display: flex; height: 100vh;">
   
 <div class="login-container">
     <h2 style="text-align: center">SIGN UP</h2>
     <form method="POST" action="signup_process.php">
         <h4>Username</h4>
         <input type="text" name="username" placeholder="Username" required>
-
         <h4>Email</h4>
         <input type="email" name="email" placeholder="Email" required>
-
         <h4>Password</h4>
         <input type="password" name="password" placeholder="Password" required>
-
         <h4>Confirm Password</h4>
         <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
 
@@ -49,9 +46,10 @@ if (isset($_SESSION['signup_message'])) {
     </form>
     
     <p style="text-align: center; font-size: 0.8em; margin-top: 10px;">
-        Already have an account? <a href="signIn.html">Log In</a>
+        Already have an account? <a href="login.php">Log In</a>
     </p>
 </div>
+    
     <!-- For Alert -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     

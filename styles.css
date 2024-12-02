@@ -1,17 +1,12 @@
-.form {
-    display:inline-flexbox;
-    justify-content: center;
-    align-items: center;
 
-}
 .login-container {
-    margin: auto;
     background-color: #35124C;
     border: solid white;
     width: 300px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    margin: auto;
 }
 .login-container h4{
     margin: 0;
@@ -26,30 +21,26 @@ input[type="password"] {
 }
 
 button[type="submit"] {
-    width: 100%;
     background-color: #543864;
     border: none;
     color: white;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
     margin: 0;
 }
 
 button.signup-button {
-    width: 7%;
+    width: 100%;
     padding: 5px;
     background-color:#35124C;
-    border: none;
     color: white;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
-    margin-top: 0;
 }
 
 a {
     color: #f8f8f8;
-    text-decoration: none;
-    font-size: 0.7em;
+    text-decoration: underline;
 }
 
 *{
@@ -57,25 +48,47 @@ a {
     box-sizing: border-box;
 }
 
-/*grid view*/
+/* Responsive Grid View*/
 [class*="col-"] {
   float: left;
   padding: 15px;
-} 
-.col-1 {width: 8.33%;}
-.col-2 {width: 16.66%;}
-.col-3 {width: 25%;}
-.col-4 {width: 33.33%;}
-.col-5 {width: 41.66%;}
-.col-6 {width: 50%;}
-.col-7 {width: 58.33%;}
-.col-8 {width: 66.66%;}
-.col-9 {width: 75%;}
-.col-10 {width: 83.33%;}
-.col-11 {width: 91.66%;}
-.col-12 {width: 100%;}
+  box-sizing: border-box;
+}
+
+/* Default column widths */
+.col-1 { width: 8.33%; }
+.col-2 { width: 16.66%; }
+.col-3 { width: 25%; }
+.col-4 { width: 33.33%; }
+.col-5 { width: 41.66%; }
+.col-6 { width: 50%; }
+.col-7 { width: 58.33%; }
+.col-8 { width: 66.66%; }
+.col-9 { width: 75%; }
+.col-10 { width: 83.33%; }
+.col-11 { width: 91.66%; }
+.col-12 { width: 100%; }
+
+/* Clearfix to clear floated elements */
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive Styling */
+
+/* For screens smaller than 768px (small smartphones) */
+@media screen and (max-width: 768px) {
+  .col-3, .col-4, .col-7, .col-8 { width: 100%; }
+}
+
+
 
 /*navigation bar*/
+.hidden {
+            display: none;
+        }
 ul.topnav {
     font-family: 'Poppins';
     font-size: 20px;
@@ -119,7 +132,6 @@ ul.topnav li a.active {
 ul.topnav .nav-center {
     display: flex;
     justify-content: center;
-    gap: 20px;
     flex-grow: 1; 
     align-items: center;
 }
@@ -136,6 +148,10 @@ ul.topnav li.right a {
     padding: 0;
     color: white;
 }
+ul.topnav button{
+    padding: 5px;
+    background: #35124C;
+}
 
 /*body*/
 body {
@@ -147,30 +163,58 @@ body {
 
 /*search bar*/
 .search-container {
-    width: 40%;
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 10px;
     background: white;
     border-radius: 20px;
-    margin-top: 40px; 
-    margin-left: auto;
-    margin-right: auto;
-    color: grey;
-    overflow: hidden;
+    width: 60%; /* Adjust width as needed */
+    margin: 100px auto; /* Center container */
+    gap: 10px;
 }
 
-
+.search-container .search-icon {
+    color: grey;
+    padding: 8px;
+}
 
 .search-input {
-    width: 60%;
+    flex-grow: 1; /* Take up available space */
+    padding: 10px;
+    border: none;
+    outline: none;
     font-size: 15px;
     color: black;
-    margin-left: 14px;
-    border: none;
-    background: transparent;
-    outline: none;
 }
+
+.search-button, .filter-button {
+    padding: 8px 16px;
+    font-size: 15px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+}
+
+.search-button {
+    background-color: #543864;
+    color: white;
+}
+
+.search-button:hover {
+    background-color: #412C4E;
+}
+
+.filter-button {
+    background-color: #FFBD69;
+    color: black;
+}
+
+.filter-button:hover {
+    background-color: #FFAF47;
+}
+
 
 button{
     padding: 8px;
@@ -192,6 +236,7 @@ button.b2:hover{background: #412C4E; color: white; width: 25%;}
 /*HOME*/
 /*cover image*/
 .image-container{
+    margin-top: 50px;
     text-align: left;
     position: relative;
 }
@@ -222,6 +267,7 @@ h1.cover {
 }
 
 /* Container for trending tracks and view more */
+/*
 .trending-container {
     display: flex;
     justify-content: space-between; 
@@ -233,6 +279,7 @@ h1.cover {
     margin: 0;
     font-size: 18px;
 }
+*/
 
 /* Popup modal styling */
 .modal {
@@ -260,7 +307,7 @@ h1.cover {
 }
 
 .close {
-    color: #aaa;
+    color: gray;
     float: right;
     font-size: 20px;
     font-weight: bold;
@@ -331,60 +378,42 @@ h1.cover {
     color: #FFBD69;
     margin: 0;
 }
+
+/*grid */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.popup-content {
+    margin: 10% auto;
+    padding: 20px;
+    background: black;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+    position: relative;
+    border: solid white 2px;
+}
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+            
 @media (max-width: 600px) {
     .grid-container {
     grid-template-columns: 1fr;
     }
 }
-
-/*USER*/
-
-/*review statistic*/
-/* Flexbox container for review statistics */
-.reviewStatistic-container {
-    padding :20px;
-    display: flex;
-    justify-content: space-around; /* Space between the two items */
-    align-items: center; /* Vertically center items */
-    margin-top: 20px;
-    text-align: center; /* Center the text within each statistic item */
-    border: solid white 3px;
-    border-radius: 20px;
-    background:#1E1E1E;
-}
-
-/* Styling for each statistic item */
-.statistic-item {
-    flex: 1; /* Allows the items to grow and fill available space equally */
-    margin: 10px;
-}
-
-.rs-heading {
-    margin: 5px 0;
-    font-size: 2.5em;
-    font-weight: bolder;
-}
-
-img.circular-image{
-    width: 40%;
-    height: auto;
-    border-radius: 50%;
-    border: 5px solid white;
-}
-
-.accountContainer{
-    margin: 8%;
-}
-
-input.account-detail {
-    width: 100%;
-    font-size: 15px;
-    padding: 4px;
-    margin: -20px 0 20px 0;
-    border-radius: 6px;
-    display: block;
-    margin-left: auto; /* Centers input within container */
-    margin-right: auto;
 }
 
 p.underscore{
@@ -394,18 +423,6 @@ p.underscore{
 
 p.underscore:hover{
     color: #FFBD69;
-}
-
-button.logout-button{
-    background: crimson;
-    color: white;
-    width: auto;
-    font-weight: bold;
-    display: block;
-    margin-left: auto; margin-right: auto;
-}
-button.logout-button:hover{
-    background: darkred;
 }
 
 /* Styling for songs table */
@@ -433,8 +450,18 @@ button.logout-button:hover{
 .song-title {
     display: flex;
     align-items: center;
-    font-size: 16px;
 }
+
+.love-button {
+    font-size: 1.5em;
+    cursor: pointer;
+    color: red;
+}
+
+.love-button:hover {
+    color: darkred;
+}
+
 
 .cover-image {
     width: 40px; /* Adjust the size as needed */
@@ -516,4 +543,29 @@ button.logout-button:hover{
     top: 5px;
     right: 10px;
     text-decoration: none;
+
+}
+
+
+#results {
+    border: 1px solid #ddd;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none; /* Hidden by default */
+    background-color: #35124C;
+    position: absolute; /* Position the results relative to the search bar */
+    z-index: 1000; /* Ensure it appears above other elements */
+    width: calc(100% - 20px); /* Matches search bar width, adjust if needed */
+    margin-top: 50px; /* Adds some space below the search bar */
+    margin-left: 10px;
+    left: 0; /* Aligns with the search bar */
+}
+
+#results div {
+    padding: 10px;
+    cursor: pointer;
+}
+#results div:hover {
+    background-color: #1E1E1E;
+
 }
